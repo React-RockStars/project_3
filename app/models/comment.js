@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
 const commentSchema = new mongoose.Schema({
-content: {
+  content: {
     type: String,
     required: true
   },
-owner: {
-  type: mongoose.Schema.Types.ObjectId,
-  ref: 'User'
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
   }
 },
 {

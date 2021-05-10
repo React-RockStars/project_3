@@ -8,14 +8,14 @@ const router = express.Router()
 const Post = require('../models/post')
 
 // require our function to handle 404 errors
-const handle404 = require('../lib/custom_errors')
+const handle404 = require('../../lib/custom_errors')
 
 router.post('/comments', (req, res, next) => {
   // extract the comment from the request's data (body)
   const commentData = req.body.comment
 
   // extract the postId from the comment data
-  const postId = postData.postId
+  const postId = commentData.postId
 
   // find the post by its id
   Post.findById(postId)
@@ -29,11 +29,11 @@ router.post('/comments', (req, res, next) => {
       return post.save()
     })
     // responding with the updated post that includes our new comment
-    .then(post =>res.status(201).json({ post }))
+    .then(post => res.status(201).json({ post }))
     .catch(next)
 })
 
-router.delete('/posts/:postId', (req, res, next) => {
+router.delete('/posts/:commentId', (req, res, next) => {
   // extract the comment's id from the url
   const commentId = req.params.commentId
 
@@ -55,7 +55,7 @@ router.delete('/posts/:postId', (req, res, next) => {
     .catch(next)
 })
 
-router.patch('/comments/:commentId', (req, res, next) =>{
+router.patch('/comments/:commentId', (req, res, next) => {
   const commentId = req.params.commentId
 
   // extract the comment data from our request's body
