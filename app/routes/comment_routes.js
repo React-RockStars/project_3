@@ -33,7 +33,7 @@ router.post('/comments', (req, res, next) => {
     .catch(next)
 })
 
-router.delete('/posts/:commentId', (req, res, next) => {
+router.delete('/comments/:commentId', (req, res, next) => {
   // extract the comment's id from the url
   const commentId = req.params.commentId
 
