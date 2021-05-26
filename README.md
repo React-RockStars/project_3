@@ -20,6 +20,17 @@ Tell-A-Vision is a forum to discuss your favorite TV shows. Once users have regi
 ### ERD
 (https://i.imgur.com/AWBWmoy.png)
 - [Logged in view all posts screen](https://imgur.com/gallery/tkIlnOH)
+
+### Routes
+- Post Routes
+  - GET (/posts)
+  - POST (/posts)
+  - PATCH (/posts:id)
+  - DELETE (/posts:id)
+- Comment Routes
+  - POST (/comments)
+  - PATCH (/comments:commentid)
+  - DELETE (/comments:commentid)
 ### Links
 - [Front-End Repo](https://github.com/React-RockStars/project-3-client)
 - [Back-End Deployed Site](https://fathomless-tor-63316.herokuapp.com/)

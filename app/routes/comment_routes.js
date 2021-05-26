@@ -10,7 +10,11 @@ const Post = require('../models/post')
 // require our function to handle 404 errors
 const handle404 = require('../../lib/custom_errors')
 
-router.post('/comments', (req, res, next) => {
+const passport = require('passport')
+
+const requireToken = passport.authenticate('bearer', { session: false })
+
+router.post('/comments', requireToken, (req, res, next) => {
   // extract the comment from the request's data (body)
   const commentData = req.body.comment
 
@@ -33,7 +37,7 @@ router.post('/comments', (req, res, next) => {
     .catch(next)
 })
 
-router.delete('/comments/:commentId', (req, res, next) => {
+router.delete('/comments/:commentId', requireToken, (req, res, next) => {
   // extract the comment's id from the url
   const commentId = req.params.commentId
 
@@ -55,7 +59,7 @@ router.delete('/comments/:commentId', (req, res, next) => {
     .catch(next)
 })
 
-router.patch('/comments/:commentId', (req, res, next) => {
+router.patch('/comments/:commentId', requireToken, (req, res, next) => {
   const commentId = req.params.commentId
 
   // extract the comment data from our request's body
