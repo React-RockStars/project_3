@@ -17,6 +17,7 @@ const requireToken = passport.authenticate('bearer', { session: false })
 router.post('/comments', requireToken, (req, res, next) => {
   // extract the comment from the request's data (body)
   const commentData = req.body.comment
+  commentData.owner = req.user.id
 
   // extract the postId from the comment data
   const postId = commentData.postId
